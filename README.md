@@ -12,6 +12,8 @@ https://docs.amplify.aws/guides/functions/dynamodb-from-python-lambda/q/platform
 
 # Serverless
 -------------------------
+https://www.serverless.com/framework/docs/getting-started/
+
 https://faun.pub/aws-lambda-serverless-framework-python-part-1-a-step-by-step-hello-world-4182202aba4a
 
 export AWS_ACCESS_KEY_ID=AKIAIOSF*******
