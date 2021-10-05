@@ -10,10 +10,10 @@ https://docs.amplify.aws/guides/functions/dynamodb-from-python-lambda/q/platform
 
 
 
-Serverless
-#-------------------------
+# Serverless
+-------------------------
 https://faun.pub/aws-lambda-serverless-framework-python-part-1-a-step-by-step-hello-world-4182202aba4a
 
 export AWS_ACCESS_KEY_ID=AKIAIOSF*******
 export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/b*****************Y
-export AWS_DEFAULT_REGION=us-west-2
+export AWS_DEFAULT_REGION=us-east-1
