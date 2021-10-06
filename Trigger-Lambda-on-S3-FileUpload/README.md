@@ -31,7 +31,7 @@
 
  4) Review the function code
 
- The Lambda function retrieves the source S3 bucket name and the key name of the uploaded object from the event parameter that it receives. The function uses the Amazon S3 getObject API to retrieve the content type of the object.
+      The Lambda function retrieves the source S3 bucket name and the key name of the uploaded object from the event parameter that it receives. The function uses the Amazon S3 getObject API to retrieve the content type of the object.
 
 
 5) Test in the console
