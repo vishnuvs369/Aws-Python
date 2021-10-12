@@ -5,7 +5,6 @@ import urllib
 
 my_state_machine_arn = os.environ['MY_STATE_MACHINE_ARN']
 client = boto3.client('stepfunctions')
-s3 = boto3.resource('s3')
 clientname=boto3.client('s3')
 
 
@@ -43,7 +42,7 @@ def handler(event, context):
                 'Key': key
             }
             try:
-                destbucket = s3.Bucket('destination bucket name')
+                destbucket = clientname.Bucket('destination bucket name')
                 destbucket.copy(copy_source, key)
                 print('{} transferred to destination bucket'.format(key))
 
