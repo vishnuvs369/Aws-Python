@@ -3,7 +3,7 @@ import json
 import boto3
 import urllib
 
-my_state_machine_arn = os.environ['MY_STATE_MACHINE_ARN']
+my_state_machine_arn = ['MY_STATE_MACHINE_ARN']
 client = boto3.client('stepfunctions')
 clientname=boto3.client('s3')
 
