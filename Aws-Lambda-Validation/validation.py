@@ -13,7 +13,7 @@ mySchema = {
     "properties": {
         "name": {"type": "string"},
         "age": {"type": "number"},
-        "phone": {"type": "number"},
+        "type": {"type": "Req,resp,fail"},
     },
 }
 
