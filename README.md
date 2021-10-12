@@ -19,3 +19,10 @@ https://faun.pub/aws-lambda-serverless-framework-python-part-1-a-step-by-step-he
 export AWS_ACCESS_KEY_ID=AKIAIOSF*******
 export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/b*****************Y
 export AWS_DEFAULT_REGION=us-east-1
+
+
+
+# boto3
+--------------------------
+
+https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html
