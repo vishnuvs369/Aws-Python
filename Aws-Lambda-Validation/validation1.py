@@ -1,26 +1,29 @@
 import json
-import jsonschema
 from jsonschema import validate
+from jsonschema import exceptions
 
 # Describe what kind of json you expect.
 studentSchema = {
     "type": "object",
     "properties": {
-        "name": {"type": "string"},
-        "age": {"type": "number"},
-        "type": {"type": "number"},
+        "name":  {"type": "string"},
+        "age":   {"type": "number"},
+        "type": {
+                   "type": "string",
+                   "enum": [ "Req", "Resp", "Fail" ]
+           },
     },
 }
 
 def validateJson(jsonData):
     try:
         validate(instance=jsonData, schema=studentSchema)
-    except jsonschema.exceptions.ValidationError as err:
+    except exceptions.ValidationError as err:
         return False
     return True
 
 # Convert json to python object.
-jsonData = json.loads('{"name": "jane doe", "rollnumber": "25", "marks": 72}')
+jsonData = json.loads('{"name": "jane doe", "age": "25", "type" : "Resp"}')
 # validate it
 isValid = validateJson(jsonData)
 if isValid:
@@ -31,7 +34,7 @@ else:
     print("Given JSON data is InValid")
 
 # Convert json to python object.
-jsonData = json.loads('{"name": "jane doe", "rollnumber": 25, "marks": 72}')
+jsonData = json.loads('{"name": "jane doe", "age": 25, "type" : "Resp"}')
 # validate it
 isValid = validateJson(jsonData)
 if isValid:
