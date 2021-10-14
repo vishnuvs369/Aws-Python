@@ -2,21 +2,32 @@ import os
 import json
 import boto3
 import urllib
+import jsonschema
+from jsonschema import validate
 
 my_state_machine_arn = ['MY_STATE_MACHINE_ARN']
 client = boto3.client('stepfunctions')
 clientname=boto3.client('s3')
 
+mySchema = {
+    "type": "object",
+    "properties": {
+        "name": {"type": "string"},
+        "age": {"type": "number"},
+        "type": {"type": "Req,resp,fail"},
+    },
+}
 
-def handler(event, context):
-    print(event)
-    for record in event['Records']:
-        response = client.start_execution(
-            stateMachineArn=my_state_machine_arn,
-            input=json.dumps(record['s3'])
-        )
-        
-    bucket = 'source bucket name'
+def validateJson(jsonData):
+    try:
+        validate(instance=jsonData, schema=mySchema)
+    except mySchema.exceptions.ValidationError as err:
+        return False
+    return True
+
+    
+def lambda_handler(event, context):
+    bucket = 'initial369'
     key = event['Records'][0]['s3']['object']['key']
     key = urllib.parse.unquote_plus(key, encoding='utf-8')
     
@@ -26,7 +37,16 @@ def handler(event, context):
     response = clientname.get_object(Bucket=bucket,Key=key)
     contents = response["Body"].read().decode()
     contents = json.loads(contents)
-    print("these are the contents of the file : \n" , contents)
+
+    isValid = validateJson(contents)
+    if isValid:
+        print(contents)
+        print("Given JSON data is Valid")
+        print("these are the contents of the file : \n" , contents)
+    else:
+        print(contents)
+        print("Given JSON data is InValid")
+        
     
     try:
         response = clientname.list_objects(
@@ -42,7 +62,7 @@ def handler(event, context):
                 'Key': key
             }
             try:
-                destbucket = clientname.Bucket('destination bucket name')
+                destbucket = clientname.Bucket('final369')
                 destbucket.copy(copy_source, key)
                 print('{} transferred to destination bucket'.format(key))
 
@@ -52,4 +72,4 @@ def handler(event, context):
                 raise e
     except Exception as e:
         print(e)
-        raise e    
+        raise e
