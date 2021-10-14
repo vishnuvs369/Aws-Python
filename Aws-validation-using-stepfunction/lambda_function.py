@@ -14,7 +14,7 @@ mySchema = {
         "age":   {"type": "number"},
         "type": {
                    "type": "string",
-                   "enum": [ "Req", "Resp", "Fail" ]
+                   "enum": [ "REQUEST", "RESPONSE", "FAIL" ]
            },
     },
 }
