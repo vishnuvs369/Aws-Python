@@ -2,19 +2,20 @@ import os
 import json
 import boto3
 import urllib
-import jsonschema
 from jsonschema import validate
+from jsonschema import exceptions
 
-my_state_machine_arn = ['MY_STATE_MACHINE_ARN']
-client = boto3.client('stepfunctions')
 clientname=boto3.client('s3')
 
 mySchema = {
     "type": "object",
     "properties": {
-        "name": {"type": "string"},
-        "age": {"type": "number"},
-        "type": {"type": "Req,resp,fail"},
+        "name":  {"type": "string"},
+        "age":   {"type": "number"},
+        "type": {
+                   "type": "string",
+                   "enum": [ "Req", "Resp", "Fail" ]
+           },
     },
 }
 
