@@ -3,6 +3,8 @@ import boto3
 import urllib
 
 clientname=boto3.client('s3')
+s3 = boto3.resource('s3')
+
 def lambda_handler(event, context):
     bucket = 'source bucket name'
     key = event['Records'][0]['s3']['object']['key']
@@ -30,7 +32,7 @@ def lambda_handler(event, context):
                 'Key': key
             }
             try:
-                destbucket = clientname.Bucket('destination bucket name')
+                destbucket = s3.Bucket('destination bucket name')
                 destbucket.copy(copy_source, key)
                 print('{} transferred to destination bucket'.format(key))
 
