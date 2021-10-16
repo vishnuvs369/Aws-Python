@@ -1,0 +1,41 @@
+{
+  "Comment": "A simple AWS Step Functions state machine",
+  "StartAt": "ProcessTransaction",
+  "States": {
+    "ProcessTransaction": {
+        "Type" : "Choice",
+        "Choices": [ 
+          {
+            "Variable": "$.TransactionType",
+            "StringEquals": "REQUEST",
+            "Next": "ProcessRequest"
+          },
+          {
+            "Variable": "$.TransactionType",
+            "StringEquals": "RESPONSE",
+            "Next": "ProcessResponse"
+          },
+          {
+            "Variable": "$.TransactionType",
+            "StringEquals": "FAIL",
+            "Next": "ProcessFail"
+          }
+      ]
+    },
+     "ProcessRequest": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:FUNCTION_NAME",
+      "End": true
+    },
+    "ProcessResponse": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:FUNCTION_NAME",
+      "End": true
+    },
+    "ProcessFail": {
+        "Type": "Task",
+        "Resource": "arn:aws:lambda:REGION:ACCOUNT_ID:function:FUNCTION_NAME",
+        "End": true
+      }
+  }
+}

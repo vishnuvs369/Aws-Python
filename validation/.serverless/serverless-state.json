@@ -220,7 +220,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/aws-stepfn-lambda/dev/1634205271550-2021-10-14T09:54:31.550Z/aws-stepfn-lambda.zip"
+                "S3Key": "serverless/aws-stepfn-lambda/dev/1634210453084-2021-10-14T11:20:53.084Z/aws-stepfn-lambda.zip"
               },
               "Handler": "s_hello.handler",
               "Runtime": "python3.8",
@@ -238,20 +238,14 @@
               "HelloLogGroup"
             ]
           },
-          "HelloLambdaVersion6WhFzZu03bqDojcUp3soidawWfp3ntWx7hPWVvtY": {
+          "HelloLambdaVersionw3tdWsPgYOKkMbSlfAaRxG6hB2KORVBk8AmNIAWY": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HelloLambdaFunction"
               },
-              "CodeSha256": "ChUVxDXZ5ufJ0WTqgfVeiuTeejkSNtowKKfRqTPXI/U="
-            }
-          },
-          "NewResource": {
-            "Type": "AWS::S3::Bucket",
-            "Properties": {
-              "BucketName": "initial369"
+              "CodeSha256": "YT/GlKD4rz0wQOzZKn1vUKSy4YFa6Mi+OObT3fLjBJY="
             }
           },
           "CWLSubFilterHelloLogGroupUsEast1": {
@@ -288,7 +282,7 @@
           "HelloLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HelloLambdaVersion6WhFzZu03bqDojcUp3soidawWfp3ntWx7hPWVvtY"
+              "Ref": "HelloLambdaVersionw3tdWsPgYOKkMbSlfAaRxG6hB2KORVBk8AmNIAWY"
             },
             "Export": {
               "Name": "sls-aws-stepfn-lambda-dev-HelloLambdaFunctionQualifiedArn"
@@ -391,19 +385,8 @@
         "timeout": 6,
         "runtime": "python3.8",
         "vpc": {},
-        "versionLogicalId": "HelloLambdaVersion6WhFzZu03bqDojcUp3soidawWfp3ntWx7hPWVvtY"
+        "versionLogicalId": "HelloLambdaVersionw3tdWsPgYOKkMbSlfAaRxG6hB2KORVBk8AmNIAWY"
       }
-    },
-    "resources": {
-      "Resources": {
-        "NewResource": {
-          "Type": "AWS::S3::Bucket",
-          "Properties": {
-            "BucketName": "initial369"
-          }
-        }
-      },
-      "Outputs": {}
     },
     "configValidationMode": "warn",
     "serviceFilename": "serverless.yml",
@@ -419,9 +402,6 @@
       },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
-      },
-      "resources": {
-        "$ref": "$[\"service\"][\"resources\"]"
       }
     },
     "app": "aws-stepfn-lambda",
@@ -434,7 +414,7 @@
     "artifact": "F:\\Aws-python\\validation\\.serverless\\aws-stepfn-lambda.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/aws-stepfn-lambda/dev/1634205271550-2021-10-14T09:54:31.550Z",
+    "artifactDirectoryName": "serverless/aws-stepfn-lambda/dev/1634210453084-2021-10-14T11:20:53.084Z",
     "artifact": "aws-stepfn-lambda.zip"
   }
 }
