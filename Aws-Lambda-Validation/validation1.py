@@ -23,7 +23,7 @@ def validateJson(jsonData):
     return True
 
 # Convert json to python object.
-jsonData = json.loads('{"name": "jane doe", "age": "25", "type" : "y"}')
+jsonData = json.loads('{"name": "jane doe", "age": "25", "type" : "Req"}')
 # validate it
 isValid = validateJson(jsonData)
 if isValid:

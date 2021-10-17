@@ -5,6 +5,7 @@ import urllib
 from jsonschema import validate
 from jsonschema import exceptions
 
+s3 = boto3.resource('s3')
 clientname=boto3.client('s3')
 
 mySchema = {
@@ -63,7 +64,7 @@ def lambda_handler(event, context):
                 'Key': key
             }
             try:
-                destbucket = clientname.Bucket('final369')
+                destbucket = s3.Bucket('final369')
                 destbucket.copy(copy_source, key)
                 print('{} transferred to destination bucket'.format(key))
 
