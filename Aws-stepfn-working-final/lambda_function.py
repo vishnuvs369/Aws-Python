@@ -14,7 +14,7 @@ mySchema = {
     "properties": {
         "name":  {"type": "string"},
         "age":   {"type": "number"},
-        "type": {
+        "TransactionType": {
                    "type": "string",
                    "enum": [ "REQUEST", "RESPONSE", "FAIL" ]
            },
@@ -30,7 +30,7 @@ def validateJson(jsonData):
 
     
 def lambda_handler(event, context):
-    bucket = 'initial369'
+    bucket = 'initialbucket369'
     key = event['Records'][0]['s3']['object']['key']
     key = urllib.parse.unquote_plus(key, encoding='utf-8')
     
@@ -41,7 +41,7 @@ def lambda_handler(event, context):
     contents = response["Body"].read().decode()
     contents = json.loads(contents)
     response = client.start_execution(
-		stateMachineArn='arn:aws:states:us-east-1:938***********',
+		stateMachineArn='arn:aws:states:us-east-1:151977413327:stateMachine:MyStateMachine',
 		input=json.dumps(contents)	
 		)
 
@@ -55,28 +55,4 @@ def lambda_handler(event, context):
         print("Given JSON data is InValid")
         
     
-    try:
-        response = clientname.list_objects(
-            Bucket=bucket,
-            MaxKeys=5
-        )
-        
-
-        for record in response['Contents']:
-            key = record['Key']
-            copy_source = {
-                'Bucket': bucket,
-                'Key': key
-            }
-            try:
-                destbucket = s3.Bucket('final369')
-                destbucket.copy(copy_source, key)
-                print('{} transferred to destination bucket'.format(key))
-
-            except Exception as e:
-                print(e)
-                print('Error getting object {} from bucket {}. '.format(key, bucket))
-                raise e
-    except Exception as e:
-        print(e)
-        raise e
+    
